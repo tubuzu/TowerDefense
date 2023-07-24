@@ -1,0 +1,105 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b83caa78c08cd549913168fb1733a54, type: 3}
+  m_Name: Level_1
+  m_EditorClassIdentifier: 
+  startHealth: 15
+  startMoney: 200
+  waves:
+  - subWaves:
+    - enemyType: 1
+      numOfEnemies: 3
+      pathIndex: 0
+    - enemyType: 2
+      numOfEnemies: 3
+      pathIndex: 0
+    - enemyType: 3
+      numOfEnemies: 3
+      pathIndex: 0
+    - enemyType: 4
+      numOfEnemies: 3
+      pathIndex: 0
+    spawnRate: 0.75
+    timeBetweenSubWaves: 2
+    waveBonus: 50
+  - subWaves:
+    - enemyType: 1
+      numOfEnemies: 5
+      pathIndex: 0
+    - enemyType: 2
+      numOfEnemies: 5
+      pathIndex: 0
+    - enemyType: 3
+      numOfEnemies: 5
+      pathIndex: 0
+    - enemyType: 4
+      numOfEnemies: 5
+      pathIndex: 0
+    - enemyType: 5
+      numOfEnemies: 2
+      pathIndex: 0
+    - enemyType: 6
+      numOfEnemies: 2
+      pathIndex: 0
+    spawnRate: 0.75
+    timeBetweenSubWaves: 1
+    waveBonus: 50
+  - subWaves:
+    - enemyType: 1
+      numOfEnemies: 9
+      pathIndex: 0
+    - enemyType: 2
+      numOfEnemies: 9
+      pathIndex: 0
+    - enemyType: 3
+      numOfEnemies: 9
+      pathIndex: 0
+    - enemyType: 4
+      numOfEnemies: 9
+      pathIndex: 0
+    - enemyType: 5
+      numOfEnemies: 9
+      pathIndex: 0
+    - enemyType: 6
+      numOfEnemies: 3
+      pathIndex: 0
+    - enemyType: 8
+      numOfEnemies: 3
+      pathIndex: 0
+    spawnRate: 0.4
+    timeBetweenSubWaves: 1
+    waveBonus: 100
+  - subWaves:
+    - enemyType: 1
+      numOfEnemies: 12
+      pathIndex: 0
+    - enemyType: 2
+      numOfEnemies: 12
+      pathIndex: 0
+    - enemyType: 3
+      numOfEnemies: 12
+      pathIndex: 0
+    - enemyType: 6
+      numOfEnemies: 4
+      pathIndex: 0
+    - enemyType: 8
+      numOfEnemies: 4
+      pathIndex: 0
+    - enemyType: 10
+      numOfEnemies: 1
+      pathIndex: 0
+    - enemyType: 13
+      numOfEnemies: 1
+      pathIndex: 0
+    spawnRate: 0.4
+    timeBetweenSubWaves: 1
+    waveBonus: 0
