@@ -227,7 +227,7 @@ namespace Managers
         {
             _gameSpeed = 0;
             SetGameSpeed(_gameSpeed);
-            if (this._health > 0) GameData.instance.UpdateLevelStar(Mathf.CeilToInt(this._health * 3 / this.startHealth));
+            if (this._health > 0) GameData.instance.UpdateLevelStar(Mathf.CeilToInt((float)this._health * 3 / this.startHealth));
             UnlockNextLevel();
             _dialogManager.ActivateWinLabel();
         }
@@ -236,6 +236,7 @@ namespace Managers
         {
             int currLvl = Preferences.GetCurrentLvl();
             Preferences.SetMaxLvl(currLvl + 1);
+            GameData.instance.SetActiveLevel(currLevel);
         }
 
         private void LooseLevel()

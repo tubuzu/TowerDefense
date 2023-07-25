@@ -40,7 +40,7 @@ public class GameData : MonoBehaviour
         BinaryFormatter formatter = new BinaryFormatter();
 
         //Create a route from the program to the file
-        FileStream file = File.Create(Application.persistentDataPath + "/player.dat");
+        FileStream file = File.Create(Application.persistentDataPath + "/towerdefense-player.dat");
 
         //Create a copy of save data
         SaveData data = new SaveData();
@@ -57,21 +57,30 @@ public class GameData : MonoBehaviour
     {
         totalLevel = GetLevelsNumber();
         // Check if the save game file exists
-        if (File.Exists(Application.persistentDataPath + "/player.dat"))
+        if (File.Exists(Application.persistentDataPath + "/towerdefense-player.dat"))
         {
             //Create a Binary Formatter
             BinaryFormatter formatter = new BinaryFormatter();
-            FileStream file = File.Open(Application.persistentDataPath + "/player.dat", FileMode.Open);
+            FileStream file = File.Open(Application.persistentDataPath + "/towerdefense-player.dat", FileMode.Open);
             saveData = formatter.Deserialize(file) as SaveData;
             file.Close();
+            if (saveData.isActive.Length != GetLevelsNumber())
+            {
+                InitialNewData();
+            }
         }
         else
         {
-            saveData = new SaveData();
-            saveData.isActive = new bool[totalLevel];
-            saveData.stars = new int[totalLevel];
-            saveData.isActive[0] = true;
+            InitialNewData();
         }
+    }
+
+    private void InitialNewData()
+    {
+        saveData = new SaveData();
+        saveData.isActive = new bool[totalLevel];
+        saveData.stars = new int[totalLevel];
+        saveData.isActive[0] = true;
     }
 
     public void UpdateLevelStar(int stars)
@@ -81,6 +90,11 @@ public class GameData : MonoBehaviour
             saveData.stars[Preferences.GetCurrentLvl() - 1] = stars;
             Save();
         }
+    }
+
+    public void SetActiveLevel(int level)
+    {
+        saveData.isActive[level] = true;
     }
 
     private int GetLevelsNumber() => Resources.LoadAll<World>("World")[0].levels.Length;
