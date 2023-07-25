@@ -76,9 +76,9 @@ public class GameData : MonoBehaviour
 
     public void UpdateLevelStar(int stars)
     {
-        if (stars > saveData.stars[Preferences.GetCurrentLvl()])
+        if (stars > saveData.stars[Preferences.GetCurrentLvl() - 1])
         {
-            saveData.stars[Preferences.GetCurrentLvl()] = stars;
+            saveData.stars[Preferences.GetCurrentLvl() - 1] = stars;
             Save();
         }
     }

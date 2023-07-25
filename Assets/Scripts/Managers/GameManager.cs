@@ -33,10 +33,10 @@ namespace Managers
             _levelLoader = FindObjectOfType<LevelLoader>();
             _exclamation = FindObjectOfType<Exclamation>();
 
-            // this.currLevel = PlayerPrefs.GetInt("Current Level", 0);
-            if (world != null && currLevel < world.levels.Length)
+            this.currLevel = Preferences.GetCurrentLvl();
+            if (world != null && currLevel - 1 < world.levels.Length)
             {
-                this.levelInfo = world.levels[currLevel];
+                this.levelInfo = world.levels[currLevel - 1];
                 this.startHealth = levelInfo.startHealth;
                 this.startMoney = levelInfo.startMoney;
             }
@@ -227,6 +227,7 @@ namespace Managers
         {
             _gameSpeed = 0;
             SetGameSpeed(_gameSpeed);
+            if (this._health > 0) GameData.instance.UpdateLevelStar(Mathf.CeilToInt(this._health * 3 / this.startHealth));
             UnlockNextLevel();
             _dialogManager.ActivateWinLabel();
         }
@@ -244,8 +245,8 @@ namespace Managers
             _dialogManager.ActivateLooseLabel();
         }
 
-        public int GetCurrentLevel() => currLevel;
+        // public int GetCurrentLevel() => currLevel;
 
-        public Level GetLevelInfo() => levelInfo;
+        // public Level GetLevelInfo() => levelInfo;
     }
 }

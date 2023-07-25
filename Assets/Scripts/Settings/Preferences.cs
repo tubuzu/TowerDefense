@@ -19,9 +19,9 @@ public class Preferences : MonoBehaviour
 
     public static void SetSFXVolume(float volume) => PlayerPrefs.SetFloat(SFX, volume);
 
-    public static float GetSFXVolume() => PlayerPrefs.GetFloat(SFX);
+    public static float GetSFXVolume() => PlayerPrefs.GetFloat(SFX, 1);
 
     public static void SetMusicVolume(float volume) => PlayerPrefs.SetFloat(MUSIC, volume);
 
-    public static float GetMusicVolume() => PlayerPrefs.GetFloat(MUSIC);
+    public static float GetMusicVolume() => PlayerPrefs.GetFloat(MUSIC, 1);
 }
