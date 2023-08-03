@@ -15,7 +15,7 @@ public class Preferences : MonoBehaviour
     public static void SetCurrentLvl(int lvl) => PlayerPrefs.SetInt(CURRENT_LVL, lvl);
     public static int GetMaxLvl() => PlayerPrefs.GetInt(MAX_LVL, 1);
 
-    public static void SetMaxLvl(int lvl) => PlayerPrefs.SetInt(MAX_LVL, lvl);
+    public static void SetMaxLvl(int lvl) => PlayerPrefs.SetInt(MAX_LVL, Mathf.Max(PlayerPrefs.GetInt(MAX_LVL, 1), lvl));
 
     public static void SetSFXVolume(float volume) => PlayerPrefs.SetFloat(SFX, volume);
 

@@ -189,7 +189,12 @@ namespace Managers
         //when button press
         public void NextLevel()
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            if (currLevel == world.levels.Length) ExitToMainMenu();
+            else
+            {
+                Preferences.SetCurrentLvl(currLevel + 1);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            }
         }
 
         public void ExitToMainMenu()
@@ -235,8 +240,8 @@ namespace Managers
         private void UnlockNextLevel()
         {
             int currLvl = Preferences.GetCurrentLvl();
-            Preferences.SetMaxLvl(currLvl + 1);
-            GameData.instance.SetActiveLevel(currLevel);
+            Preferences.SetMaxLvl(Mathf.Min(world.levels.Length - 1, currLvl + 1));
+            GameData.instance.SetActiveLevel(Preferences.GetMaxLvl());
         }
 
         private void LooseLevel()
@@ -245,9 +250,5 @@ namespace Managers
             SetGameSpeed(_gameSpeed);
             _dialogManager.ActivateLooseLabel();
         }
-
-        // public int GetCurrentLevel() => currLevel;
-
-        // public Level GetLevelInfo() => levelInfo;
     }
 }
